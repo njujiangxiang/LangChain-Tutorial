@@ -1,0 +1,13 @@
+# LangChain Tutorial 配置文件
+
+# API 配置
+api:
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  model: "qwen3.5-plus"
+  enable_thinking: true
+
+# 输出配置
+output:
+  show_thinking: true
+  thinking_separator: "===============" 
+  answer_separator: "===============" 

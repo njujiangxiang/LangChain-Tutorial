@@ -1,13 +1,41 @@
-from  langchain_openai import ChatOpenAI
+"""
+Hello World - 使用 LangChain 调用阿里云百炼 API
+配置方式：
+    1. 复制 .env.example 为 .env
+    2. 在 .env 中配置 ALIYUN_API_KEY
+    3. 可选：修改 config.yaml 调整其他配置
+"""
 
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
 
+# 加载环境变量
+load_dotenv()
+
+# 从环境变量或默认值配置
+api_key = os.getenv("ALIYUN_API_KEY")
+base_url = os.getenv("ALIYUN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+model_name = os.getenv("DEFAULT_MODEL", "qwen3.5-plus")
+
+# 初始化模型
 model = ChatOpenAI(
-    model_name = "qwen3.5-plus",
-    api_key="sk-ea696c7fcc5a44efb003c7876cb02bc1",
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-
+    model=model_name,
+    api_key=api_key,
+    base_url=base_url,
 )
 
-res = model.invoke("您好，您是谁？您有什么技能？")
 
-print(res.content)
+def ask(question: str) -> str:
+    """调用模型并返回回复"""
+    response = model.invoke(question)
+    return response.content
+
+
+if __name__ == "__main__":
+    print("Hello, World!")
+    print(f"使用模型：{model_name}\n")
+
+    result = ask("您好，您是谁？您有什么技能？")
+    print(result)
