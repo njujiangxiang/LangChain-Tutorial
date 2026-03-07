@@ -3,9 +3,15 @@
 # API 配置
 api:
   base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
-  model: "wen3.5-flash"
+  model: "qwen3.5-flash"
   enable_thinking: false
   enable_search: true
+
+# 本地 Ollama 配置
+ollama:
+  base_url: "http://localhost:11434/v1"
+  model: "qwen3.5:9b"
+  api_key: "ollama"
 
 # 输出配置
 output:
