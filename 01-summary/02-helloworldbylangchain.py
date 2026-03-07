@@ -33,9 +33,23 @@ def ask(question: str) -> str:
     return response.content
 
 
+def ask_stream(question: str) -> str:
+    """流式调用模型并打印回复"""
+    full_response = ""
+    for chunk in model.stream(question):
+        print(chunk.content, end="", flush=True)
+        full_response += chunk.content
+    print()
+    return full_response
+
+
 if __name__ == "__main__":
     print("Hello, World!")
     print(f"使用模型：{model_name}\n")
 
+    print("普通调用:")
     result = ask("您好，您是谁？您有什么技能？")
     print(result)
+
+    print("\n流式调用:")
+    ask_stream("请介绍一下您自己。")

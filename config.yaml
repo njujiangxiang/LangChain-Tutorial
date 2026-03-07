@@ -4,7 +4,8 @@
 api:
   base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
   model: "wen3.5-flash"
-  enable_thinking: true
+  enable_thinking: false
+  enable_search: true
 
 # 输出配置
 output:
