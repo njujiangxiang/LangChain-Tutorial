@@ -46,7 +46,7 @@ async def generate_response(message: str, enable_thinking: bool = True):
     )
 
     is_answering = False
-    separator = "=" * 20i
+    separator = "=" * 20
 
     if enable_thinking:
         yield f"\n{separator}思考过程{separator}\n\n"
